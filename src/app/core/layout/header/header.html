@@ -2,7 +2,7 @@
   <span>Logistik ERP</span>
   <span class="spacer"></span>
   @if (currentUser(); as user) {
-    <span class="username">{{ user.username }}</span>
+    <a routerLink="/profile" class="username">{{ user.username }}</a>
   }
   <button mat-icon-button (click)="logout()" aria-label="Abmelden">
     <mat-icon>logout</mat-icon>
