@@ -1,0 +1,31 @@
+<div class="login-page">
+  <form class="login-card" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    <h1>Anmelden</h1>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Benutzername oder E-Mail</mat-label>
+      <input matInput formControlName="username" autocomplete="username" />
+      @if (loginForm.controls.username.invalid && loginForm.controls.username.touched) {
+        <mat-error>Benutzername oder E-Mail ist erforderlich</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Passwort</mat-label>
+      <input matInput type="password" formControlName="password" autocomplete="current-password" />
+      @if (loginForm.controls.password.hasError('required') && loginForm.controls.password.touched) {
+        <mat-error>Passwort ist erforderlich</mat-error>
+      }
+      @if (loginForm.controls.password.hasError('minlength') && loginForm.controls.password.touched) {
+        <mat-error>Passwort muss mindestens 6 Zeichen haben</mat-error>
+      }
+    </mat-form-field>
+
+    @if (loginError()) {
+      <p class="login-error" role="alert">Benutzername oder Passwort ist falsch.</p>
+    }
+
+    <button mat-flat-button type="submit" color="primary">Anmelden</button>
+  </form>
+</div>
+
