@@ -1,1 +1,32 @@
-<p>settings works!</p>
+<section class="settings">
+  <h1>Einstellungen</h1>
+
+  <mat-card class="settings-card" appearance="outlined">
+    <h2>Sprache</h2>
+    <mat-button-toggle-group
+      [value]="language()"
+      (change)="language.set($event.value)"
+      aria-label="Sprache auswählen"
+    >
+      <mat-button-toggle value="de">Deutsch</mat-button-toggle>
+      <mat-button-toggle value="en">English</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card>
+
+  <mat-card class="settings-card" appearance="outlined">
+    <h2>Benachrichtigungen</h2>
+    <mat-slide-toggle
+      [checked]="notificationsEnabled()"
+      (change)="notificationsEnabled.set($event.checked)"
+    >
+      E-Mail-Benachrichtigungen aktivieren
+    </mat-slide-toggle>
+  </mat-card>
+
+  <mat-card class="settings-card" appearance="outlined">
+    <h2>Darstellung</h2>
+    <mat-slide-toggle [checked]="darkModeEnabled()" (change)="darkModeEnabled.set($event.checked)">
+      Dark Mode (Mockup, ohne Funktion)
+    </mat-slide-toggle>
+  </mat-card>
+</section>
