@@ -5,17 +5,17 @@ const STORAGE_KEY = 'erp_auth_user';
 
 const MOCK_USERS: { username: string; password: string; role: User['role'] }[] = [
   { username: 'admin', password: 'admin123', role: 'manager' },
-  { username: 'lager', password: 'lager123', role: 'employee' },
+  { username: 'employee', password: 'employee123', role: 'employee' },
 ];
 
 @Service()
 export class AuthService {
-   private readonly _currentUser = signal<User | null>(this.restoreFromStorage());
+  private readonly _currentUser = signal<User | null>(this.restoreFromStorage());
 
   readonly currentUser = this._currentUser.asReadonly();
   readonly isAuthenticated = computed(() => this._currentUser() !== null);
 
-   login(username: string, password: string): boolean {
+  login(username: string, password: string): boolean {
     const isValid = MOCK_USERS.find((u) => u.username === username && u.password === password);
 
     if (!isValid) {
@@ -26,7 +26,7 @@ export class AuthService {
     this._currentUser.set(user);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
     return true;
-   }
+  }
 
   logout(): void {
     this._currentUser.set(null);
