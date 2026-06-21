@@ -3,8 +3,10 @@ import { User } from '../models/user.model';
 
 const STORAGE_KEY = 'erp_auth_user';
 
-const MOCK_USERNAME = 'admin';
-const MOCK_PASSWORD = 'admin123';
+const MOCK_USERS: { username: string; password: string; role: User['role'] }[] = [
+  { username: 'admin', password: 'admin123', role: 'manager' },
+  { username: 'lager', password: 'lager123', role: 'employee' },
+];
 
 @Service()
 export class AuthService {
@@ -14,13 +16,13 @@ export class AuthService {
   readonly isAuthenticated = computed(() => this._currentUser() !== null);
 
    login(username: string, password: string): boolean {
-    const isValid = username === MOCK_USERNAME && password === MOCK_PASSWORD;
+    const isValid = MOCK_USERS.find((u) => u.username === username && u.password === password);
 
     if (!isValid) {
       return false;
     }
 
-    const user: User = { username };
+    const user: User = { username: isValid.username, role: isValid.role };
     this._currentUser.set(user);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
     return true;
