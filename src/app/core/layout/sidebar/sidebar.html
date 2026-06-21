@@ -1,0 +1,36 @@
+<nav aria-label="Hauptnavigation">
+  <mat-nav-list>
+    <a
+      mat-list-item
+      routerLink="/dashboard"
+      routerLinkActive
+      #rla1="routerLinkActive"
+      [attr.aria-current]="rla1.isActive ? 'page' : null"
+    >
+      <mat-icon matListItemIcon aria-hidden="true">dashboard</mat-icon>
+      <span matListItemTitle>Dashboard</span>
+    </a>
+    <a
+      mat-list-item
+      routerLink="/orders"
+      routerLinkActive
+      #rla2="routerLinkActive"
+      [attr.aria-current]="rla2.isActive ? 'page' : null"
+    >
+      <mat-icon matListItemIcon aria-hidden="true">local_shipping</mat-icon>
+      <span matListItemTitle>Aufträge</span>
+    </a>
+    @if (userRole() === 'manager') {
+      <a
+        mat-list-item
+        routerLink="/settings"
+        routerLinkActive
+        #rla3="routerLinkActive"
+        [attr.aria-current]="rla3.isActive ? 'page' : null"
+      >
+        <mat-icon matListItemIcon aria-hidden="true">settings</mat-icon>
+        <span matListItemTitle>Einstellungen</span>
+      </a>
+    }
+  </mat-nav-list>
+</nav>

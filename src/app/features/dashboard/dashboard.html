@@ -1,0 +1,15 @@
+<section class="dashboard">
+  @if (currentUser(); as user) {
+    <h1>Willkommen zurück, {{ user.username }}</h1>
+  }
+
+  <div class="kpi-grid">
+    <app-kpi-card label="Offene Aufträge" [value]="kpis.openOrders" icon="assignment" />
+    <app-kpi-card label="Sendungen heute" [value]="kpis.shipmentsToday" icon="local_shipping" />
+    <app-kpi-card
+      label="Lagerauslastung"
+      [value]="kpis.warehouseUtilization + ' %'"
+      icon="warehouse"
+    />
+  </div>
+</section>

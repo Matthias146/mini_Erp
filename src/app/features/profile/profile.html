@@ -1,0 +1,10 @@
+<section class="profile">
+  <h1>Profil</h1>
+
+  @if (currentUser(); as user) {
+    <mat-card class="profile-card" appearance="outlined">
+      <p><strong>Benutzername:</strong> {{ user.username }}</p>
+      <p><strong>Rolle:</strong> {{ roleLabels[user.role] }}</p>
+    </mat-card>
+  }
+</section>

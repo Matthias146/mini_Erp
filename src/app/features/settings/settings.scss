@@ -1,0 +1,19 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 480px;
+}
+
+.settings-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.settings-card h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
