@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +14,9 @@ import { Router, RouterLink } from '@angular/router';
 export class Header {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+
+  readonly showMenuButton = input(false);
+  readonly menuToggle = output<void>();
 
   protected readonly currentUser = this.authService.currentUser;
 

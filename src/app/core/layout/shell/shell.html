@@ -1,7 +1,12 @@
-<app-header />
+<app-header [showMenuButton]="isMobile()" (menuToggle)="sidenav.toggle()" />
 
 <mat-sidenav-container class="shell-container">
-  <mat-sidenav mode="side" opened class="shell-sidenav">
+  <mat-sidenav
+    #sidenav
+    [mode]="isMobile() ? 'over' : 'side'"
+    [opened]="!isMobile()"
+    class="shell-sidenav"
+  >
     <app-sidebar />
   </mat-sidenav>
 

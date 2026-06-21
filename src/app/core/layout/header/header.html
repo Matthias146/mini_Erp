@@ -1,4 +1,9 @@
 <mat-toolbar color="primary">
+  @if (showMenuButton()) {
+    <button mat-icon-button (click)="menuToggle.emit()" aria-label="Menü öffnen">
+      <mat-icon>menu</mat-icon>
+    </button>
+  }
   <span>Logistik ERP</span>
   <span class="spacer"></span>
   @if (currentUser(); as user) {
