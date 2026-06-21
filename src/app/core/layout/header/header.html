@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <span>Logistik ERP</span>
+  <span class="spacer"></span>
+  @if (currentUser(); as user) {
+    <span class="username">{{ user.username }}</span>
+  }
+  <button mat-icon-button (click)="logout()" aria-label="Abmelden">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
