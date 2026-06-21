@@ -14,6 +14,7 @@ export class AuthService {
 
   readonly currentUser = this._currentUser.asReadonly();
   readonly isAuthenticated = computed(() => this._currentUser() !== null);
+  readonly userRole = computed(() => this._currentUser()?.role ?? null);
 
   login(username: string, password: string): boolean {
     const isValid = MOCK_USERS.find((u) => u.username === username && u.password === password);

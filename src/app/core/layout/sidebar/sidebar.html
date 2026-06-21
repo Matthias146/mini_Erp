@@ -20,15 +20,17 @@
       <mat-icon matListItemIcon aria-hidden="true">local_shipping</mat-icon>
       <span matListItemTitle>Aufträge</span>
     </a>
-    <a
-      mat-list-item
-      routerLink="/settings"
-      routerLinkActive
-      #rla3="routerLinkActive"
-      [attr.aria-current]="rla3.isActive ? 'page' : null"
-    >
-      <mat-icon matListItemIcon aria-hidden="true">settings</mat-icon>
-      <span matListItemTitle>Einstellungen</span>
-    </a>
+    @if (userRole() === 'manager') {
+      <a
+        mat-list-item
+        routerLink="/settings"
+        routerLinkActive
+        #rla3="routerLinkActive"
+        [attr.aria-current]="rla3.isActive ? 'page' : null"
+      >
+        <mat-icon matListItemIcon aria-hidden="true">settings</mat-icon>
+        <span matListItemTitle>Einstellungen</span>
+      </a>
+    }
   </mat-nav-list>
 </nav>
