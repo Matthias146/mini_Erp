@@ -35,10 +35,9 @@ export class AuthService {
   }
 
   private restoreFromStorage(): User | null {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-
     try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
       return JSON.parse(raw) as User;
     } catch {
       return null;
